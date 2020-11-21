@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1605891690 source:c:\users\natas\desktop\tpi\main.cpp
+	<queue>
+	<iostream>
+	<vector>
+

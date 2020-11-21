@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1605918007 source:c:\users\natas\desktop\busca\main.cpp
+	<iostream>
+	<queue>
+

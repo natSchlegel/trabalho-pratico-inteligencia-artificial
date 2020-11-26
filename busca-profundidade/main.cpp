@@ -1,84 +1,75 @@
 #include <iostream>
-#include <queue>
+#include <string>
+#include <stack>
+#include <list>
+
 using namespace std;
+
+struct Tabuleiro{
+list<Tabuleiro> sucessores;
+int mat[3][3] = {{1,2,3},{4,5,6},{7,0,8}};
+int posx = 2;
+int posy = 1;
+bool explorado = false;
+
+};
+
+stack<Tabuleiro> stackTabuleiro;
 
 int obj[3][3] = {{1,2,3},{4,5,6},{7,8,0}};
 
-struct Tabuleiro{
-    int mat[3][3] = {{1,2,3},{4,5,6},{7,0,8}};
-    int adj[3][3];
-    bool visitado = false;
-};
+bool validar(int x, int y){
+    return !(x < 0 || x > 2 || y < 0 || y > 2);
+}
 
-struct Vertice {
-    int grau;
-};
+bool finalizar(Tabuleiro tabuleiro){
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            if(tabuleiro.mat[i][j] != obj[i][j])
+                return false;
+        }
+    }
+    return true;
+}
+
+void movimentarTabuleiro(Tabuleiro tabuleiro){
+
+int posicaox[4] = {1,-1,0,0};
+int posicaoy[4] = {0,0,1,-1};
+
+stackTabuleiro.push(tabuleiro);
+
+for (int i = 0; i < 4; i++){
+int pox = tabuleiro.posx + posicaox[i];
+int poy = tabuleiro.posy + posicaoy[i];
+if (validar(pox,poy)){
+        Tabuleiro sucessor = tabuleiro;
+        swap(sucessor.mat[sucessor.posx][sucessor.posy],sucessor.mat[pox][poy]);
+        sucessor.posx = pox;
+        sucessor.posy = poy;
+        (tabuleiro.sucessores).push_front(sucessor);
+        }
+    }
+}
 
 
-queue<Tabuleiro>visitar;
-
-void criarMatriz(Tabuleiro tabuleiro){
-    for (int l = 0; l < 3; l++){
-        for (int c = 0; c < 3; c++){
-            if (tabuleiro.adj[l][c] != 0){
-                tabuleiro.adj[l][c] = 1;
+void buscar(Tabuleiro tabuleiro){
+    tabuleiro.explorado = true;
+    movimentarTabuleiro(tabuleiro);
+    for(auto prox : tabuleiro.sucessores){
+        if(prox.explorado = false){
+            stackTabuleiro.push(prox);
             }
-        }
     }
-    for (int l = 0; l < 3; l++){
-        int grau = 0;
-        for (int c = 0; c < 3; c++){
-            if (tabuleiro.adj[l][c] > 0){
-                grau++;
-            }
-        }
-    }
+    stackTabuleiro.pop();
+    Tabuleiro aux = stackTabuleiro.top();
+    buscar(aux);
+    return;
 }
 
-void retornarVertice(Tabuleiro tabuleiro, int aux)
-{
-
-    for (int l = aux; l < aux+1; l++){
-        for (int c = 0; c < 6; c++){
-            if (tabuleiro.adj[l][c] > 0){
-            }
-        }
-    }
-}
-
-void imprimirTabuleiro(Tabuleiro tabuleiro){
-    for (int i = 0; i < 3; i++){
-        for (int j = 0; j < 3; j++){
-            cout << tabuleiro.adj[i][j] << " | ";
-        }
-        cout << endl;
-    }
-    cout << endl;
-}
-
-void busca(){
-
-    stack<int> pilha;
-	bool visitados[6];
-	for(int i = 0; i < 6; i++)
-		visitados[i] = false;
-
-	while(true)
-	{
-		if(!visitados[v]){
-			visitados[v] = true;
-			pilha.push(v);
-		}
-}
-
-void expandir(){
-
-}
-
-int main()
-{
+int main(){
 Tabuleiro tabuleiro;
-criarMatriz(tabuleiro);
-imprimirTabuleiro(tabuleiro);
-    return 0;
+
+buscar(tabuleiro);
+
 }

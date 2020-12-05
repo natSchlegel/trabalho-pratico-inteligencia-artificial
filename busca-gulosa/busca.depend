@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1607133539 source:c:\users\natas\desktop\trabalho-pratico-inteligencia-artificial\busca-gulosa\main.cpp
+	<iostream>
+	<string>
+	<stack>
+	<list>
+	<queue>
+

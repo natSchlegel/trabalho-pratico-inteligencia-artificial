@@ -15,9 +15,11 @@ int posy = 1;
 int contagem = 0;
 };
 
-queue<Tabuleiro> queueTabuleiro;
-
 int obj[3][3] = {{1,2,3},{4,5,6},{7,8,0}};
+
+Tabuleiro tabuleiro;
+
+queue<Tabuleiro> queueTabuleiro;
 
 bool validar(int x, int y){
     return !(x < 0 || x > 2 || y < 0 || y > 2);
@@ -39,25 +41,14 @@ void compararPecas(Tabuleiro tabuleiro){
             if(tabuleiro.mat[i][j] != obj[i][j]){
                 tabuleiro.contagem++;
             }
-            }
-}
-}
-
-struct compararEssaBagaca()//com todo respeito
-{
-    bool operator()(Tarefas const& aux, Tarefas const& auxi)
-    {
-        return aux.prioridade < auxi.prioridade;
+        }
     }
-};
+}
 
-void compararSucessores(Tabuleiro sucessor, Tabuleiro tabuleiro){
-for (int i = 0; i < (sucessor.sucessores).size(); i++){
-aux[i] = tabuleiro.contagem;
-}
-for (int i = 0; i < (sucessor.sucessores).size(); i++){
-    cout << aux ;
-}
+void compSuc(Tabuleiro sucessor, Tabuleiro tabuleiro){
+
+    /*comparar os números de tabuleiro.contagem e retornar o menor*/
+
 }
 
 void movimentarTabuleiro(Tabuleiro tabuleiro){
@@ -81,24 +72,29 @@ if (validar(pox,poy)){
     }
 }
 
-/*
-void buscar(Tabuleiro tabuleiro){
-    tabuleiro.explorado = true;
-    movimentarTabuleiro(tabuleiro);
-    for(auto prox : tabuleiro.sucessores){
-        if(prox.explorado = false){
-            stackTabuleiro.push(prox);
-            }
+void imprimeTabuleiro(Tabuleiro tabuleiro){
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            cout << tabuleiro.mat[i][j] << " | ";
+        }
+        cout << endl;
     }
-    stackTabuleiro.pop();
-    Tabuleiro aux = stackTabuleiro.top();
-    buscar(aux);
+    cout << endl;
     return;
-}*/
+}
+
+void buscar(Tabuleiro tabuleiro){
+    queueTabuleiro.push(tabuleiro);
+    while(queueTabuleiro.size()>0){
+        movimentarTabuleiro(tabuleiro);
+    }
+    return;
+}
 
 int main(){
-Tabuleiro tabuleiro;
-/*
+
 buscar(tabuleiro);
-*/
+
+/*erro: não é criado a fila queueTabuleiro */
+
 }

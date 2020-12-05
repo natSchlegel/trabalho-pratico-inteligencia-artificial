@@ -1,4 +1,3 @@
-//Você está vendo este comentário?
 #include <queue>
 #include <iostream>
 using namespace std;
@@ -40,27 +39,19 @@ int main()
     Tabuleiro tabuleiro;
     queue<Tabuleiro> fazer;
     queue<Tabuleiro> feito;
-    //Utilizado na função de gerar sucessor
     int posicaox[4] = {1,-1,0,0};
     int posicaoy[4] = {0,0,1,-1};
     cout << "Estado Inicial:";
     cout << endl;
     imprimeTabuleiro(tabuleiro);
-    //Inserindo estado inicial na fila
     fazer.push(tabuleiro);
     while(fazer.size()>0){
-        //Retira estado/nó/tabuleiro da fila
         Tabuleiro tabuleiro = fazer.front();
         fazer.pop();
-        //lista.add(tabuleiro);
-        //pos = lista.size()-1;
         cout << "Estado Atual: " << endl;
         imprimeTabuleiro(tabuleiro);
-        //Testando se é objetivo
         if(Ehobjetivo(tabuleiro))
-            //Imprimecaminho;
-            return 0; //depois fazer ajustes p retornar caminho
-        //Gerando e incluindo sucessores na fila
+            return 0;
         cout << "Sucessores: " << endl;
         for (int i = 0; i < 4; i++)
         {
@@ -70,11 +61,8 @@ int main()
             {
                 Tabuleiro sucessor = tabuleiro; //referencia ou valor
                 swap(sucessor.mat[sucessor.posx][sucessor.posy],sucessor.mat[pox][poy]);
-                //atualizando a posição vazia do novo estado gerado após swap
                 sucessor.posx = pox;
                 sucessor.posy = poy;
-                //sucessor.pai = pos;
-                //inserindo sucessor (novo estado, novo tabuleiro) na fila
                 fazer.push(sucessor);
                 imprimeTabuleiro(sucessor);
             }

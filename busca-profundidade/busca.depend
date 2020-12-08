@@ -3,9 +3,10 @@
 	<iostream>
 	<queue>
 
-1606360383 source:c:\users\natas\desktop\trabalho-pratico-inteligencia-artificial\busca-profundidade\main.cpp
+1607387259 source:c:\users\natas\desktop\trabalho-pratico-inteligencia-artificial\busca-profundidade\main.cpp
 	<iostream>
 	<string>
 	<stack>
+	<vector>
 	<list>
 

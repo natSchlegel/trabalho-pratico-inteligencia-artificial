@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1607564696 source:c:\users\natas\desktop\trabalho-pratico-inteligencia-artificial\busca-a-estrela\main.cpp
+	<iostream>
+	<list>
+	<cmath>
+	<queue>
+
